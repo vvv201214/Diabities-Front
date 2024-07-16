@@ -1,38 +1,132 @@
-.App {
-  text-align: center;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin: 0;
+  background: #f5f5f5;
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.heading {
+ text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.patient-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  /* gap: 20px; */
+  /* padding: 20px; */
+
+}
+
+.patient-item {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  width: 300px;
+  border-radius: 5px;
+  transition: 'background 0.3s';
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.patient-item:hover {
+  background: #f0f0f0;
+}
+
+.patient-icon {
+  font-size: 24px;
+}
+
+.patient-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.main-form {
+  height: 80vh;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-button {
+  align-items: end;
+  background-color: rgb(68, 212, 68);
+  height: 30px;
+  width: 90px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form-button-div {
+  display: flex;
+  justify-content: end;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+input:hover {
+  border-color: #888;
+}
+
+td {
+  border: .2px solid black;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+th {
+  border: .2px solid black;
+  padding: 5px;
+  font-size: 20px;
+}
+
+table {
+  margin-top: 20px;
+  align-items: center;
+  width: 100%;
 }
