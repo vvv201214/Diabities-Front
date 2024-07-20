@@ -6,11 +6,15 @@ import Table from './table';
 
 export default function Form({selectedPatient}) {
 
-    const [form, setForm] = useState({
+    const todaysDate = (new Date())?.toISOString()?.split('T')[0]
+    const initialState = {
         diabities: '',
         remark: '',
-        patient: selectedPatient?._id
-    });
+        patient: selectedPatient?._id,
+        isToday: true,
+        date: todaysDate
+    }
+    const [form, setForm] = useState(initialState);
 
     const [detailSaved, setDetailSaved] = useState([]);
 
@@ -40,11 +44,7 @@ export default function Form({selectedPatient}) {
             setMessage(prev=>({...prev, showPopup: true}));
             setMessage(prev=>({...prev, type: 'success'}));
             setMessage(prev=>({...prev, text: `ठीक है|`}));
-            setForm({
-                diabities: '',
-                remark: '',
-                patient: selectedPatient?._id
-            });
+            setForm(initialState);
             setDetailSaved(data.data);
         } else{
             setMessage(prev=>({...prev, showPopup: true}));
@@ -54,12 +54,42 @@ export default function Form({selectedPatient}) {
         }
     }
 
+    console.log(form.date)
+
 
     return (
         <>
             <div className='main-form'>
                 <h2>नमस्ते {selectedPatient?.name} !</h2>
                 <div className="form">
+                    <div className='flex'>
+                        <input
+                            type="checkbox"
+                            id="today" name="today"
+                            value="Today"
+                            checked={form.isToday}
+                            onChange={(e)=>{
+                                setForm(prev=>({
+                                    ...prev,
+                                    isToday: !form.isToday
+                                }))
+                            }}
+                        />
+                        <span style={{ fontWeight: 600 }}>आज</span>
+                    </div>
+
+                    {!form.isToday &&
+                    <input
+                        placeholder="तारीख"
+                        type='date'
+                        value={form.date}
+                        onChange={(e) => {
+                            setForm(prev => ({
+                                ...prev,
+                                date: e.target.value
+                            }));
+                        }}
+                    />}
                     <input
                         placeholder="शूगर"
                         type='number'
